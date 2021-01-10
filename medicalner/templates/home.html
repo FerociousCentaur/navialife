@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<b>Press ctrl and select to select multiple</b>
+           <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ pform }}
+    <input type="submit" name="profilepic" value="Submit" >
+    </form>
+
+
+
+{% if error %}
+{{error}}
+{% endif %}
+{% if data %}
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+       <th>Sku Id</th>
+        <th>Product Id </th>
+        <th>Sku Name</th>
+        <th>Price</th>
+        <th>Manufacturer Name</th>
+        <th>Salt Name</th>
+        <th>Druf form</th>
+        <th>pack size</th>
+        <th>Strength</th>
+        <th>Product Banned</th>
+        <th>Unit</th>
+        <th>Price per Unit</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+    <tr><td>{{i.sku_id}}</td>
+
+    <td>{{i.product_id}}</td>
+
+    <td>{{i.sku_name}}</td>
+
+    <td>{{i.price}}</td>
+
+    <td>{{i.manufacturer_name}}</td>
+
+    <td>{{i.salt_name}}</td>
+
+    <td>{{i.drug_form}}</td>
+
+    <td>{{i.pack_size}}</td>
+
+    <td>{{i.strength}}</td>
+
+    <td>{{i.product_banned}}</td>
+
+    <td>{{i.unit}}</td>
+
+    <td>{{i.price_per_unit}}</td>
+
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endif %}
+
+</body>
+</html>
